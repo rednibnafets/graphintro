@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package graphintro;
 
 import java.util.ArrayList;
@@ -13,11 +8,9 @@ import java.util.ArrayList;
  */
 public class AdjMatrix implements AdjMatrixI {
 
-    private ArrayList< String> theMatrix; // :-)
-    //private Graph theGraph;
-
-    private static final String zero_ = "0";
-    private static final String one_ = "1";
+    private static ArrayList< String > theMatrix; // :-)
+    private static final String ZERO = "0";
+    private static final String ONE = "1";
 
     public AdjMatrix(Graph g) {
         theMatrix = new ArrayList<>();
@@ -34,10 +27,10 @@ public class AdjMatrix implements AdjMatrixI {
                     }
                 }
                 if (hit) {
-                    matrixString = matrixString.concat(one_);
+                    matrixString = matrixString.concat(ONE);
 
                 } else {
-                    matrixString = matrixString.concat(zero_);
+                    matrixString = matrixString.concat(ZERO);
                 }
             }
             theMatrix.add(matrixString);
@@ -46,15 +39,16 @@ public class AdjMatrix implements AdjMatrixI {
     }
 
     @Override
-    public ArrayList< String> getAdjMatrix() {
-        return this.theMatrix;
+    public ArrayList< String > getAdjMatrix() {
+         return theMatrix;
     }
 
     @Override
     public void showAdjMatrix() {
-        for (String s : theMatrix) {
+        theMatrix.stream().forEach((s) -> {
             System.out.println(s);
-        }
+        });
     }
-
 }
+
+

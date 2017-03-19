@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package graphintro;
 
 /**
@@ -17,9 +12,36 @@ public class GraphIntro {
     public static void main(String[] args) {
         //test1();
         test2() ;
+        //test3() ;
         
     }
 
+   /*
+    *  instantiate a Graph object
+    *  Try to add some "duplicate" edges -> this should not be possible.
+    *
+     */
+    public static int test3() {
+        Graph g = new Graph();
+        Edge e1 = new Edge(3,7);
+        g.insertEdge(e1) ;
+
+        g.showDetails() ;
+        g.showEdges() ;
+        g.showAdjacencyMatrix() ;
+
+        Edge e2 = new Edge(3,7);        
+        Edge e3 = new Edge(3,7); 
+        g.insertEdge(e2) ;
+        g.insertEdge(e3) ;
+        
+        g.showDetails() ;
+        g.showEdges() ;
+        g.showAdjacencyMatrix() ;  
+                
+        return 0 ;
+    }
+    
    /*
     *  instantiate a Graph object
     *  add some Edges to it
@@ -29,7 +51,7 @@ public class GraphIntro {
     public static int test2() {
         Graph g = new Graph();
         Edge e1 = new Edge(3,7);
-        Edge e2 = new Edge(1,4);
+        Edge e2 = new Edge(1,8);
         Edge e3 = new Edge(7,8);
         Edge e4 = new Edge(0,5);
         Edge e5 = new Edge(5,2);
@@ -52,6 +74,7 @@ public class GraphIntro {
         g.insertEdge(e10) ;
         g.insertEdge(e11) ;
 
+        g.showDetails() ;
         g.showEdges() ;
         g.showAdjacencyMatrix() ;
         

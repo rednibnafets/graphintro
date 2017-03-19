@@ -3,7 +3,7 @@ package graphintro;
 import java.util.ArrayList;
 
 /**
- * Adjancency Matrix 
+ * Adjacency Matrix 
  * @author stefan
  */
 public interface AdjMatrixI {

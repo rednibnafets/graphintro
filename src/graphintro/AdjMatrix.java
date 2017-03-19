@@ -19,15 +19,18 @@ public class AdjMatrix implements AdjMatrixI {
 
     public AdjMatrix(Graph g) {
         theMatrix = new ArrayList<>();
-        int matrixSize = g.getNumberOfEdges();
-
-        for (int rows = 0; rows < matrixSize; rows++) {
+        int matrixSize = g.findMaxVertex();
+        // use <= in the 2 outer loops
+        // vertex numbering starts at 0, but we need to capture
+        // the maximum vertex number, too
+        for (int rows = 0; rows <= matrixSize; rows++) {
             String matrixString = "";
-            for (int cols = 0; cols < matrixSize; cols++) {
+            for (int cols = 0; cols <= matrixSize; cols++) {
                 boolean hit = false;
-                for (int pos = 0; pos < matrixSize; pos++) {
-                    if (g.getEdge(pos).getV1() == rows
-                            && g.getEdge(pos).getV2() == cols) {
+                // go through all entries of the Graph's ArrayList
+                for (int pos = 0; pos < g.getNumberOfEdges() ; pos++) {
+                    if ( g.getEdge(pos).getV1() == rows
+                      && g.getEdge(pos).getV2() == cols) {
                         hit = true;
                     }
                 }

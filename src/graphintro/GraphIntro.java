@@ -37,7 +37,17 @@ public class GraphIntro {
         Edge e9 = new Edge(4,9);
         Edge e10 = new Edge(2,6);
         Edge e11 = new Edge(6,4);
+        Edge e12 = new Edge(10,50);
+        Edge e13 = new Edge(5,50);
+        Edge e14 = new Edge(2,20);
+        Edge e15 = new Edge(1,20);
 
+        Edge e16 = new Edge(30,22);
+        Edge e17 = new Edge(30,20);
+        Edge e18 = new Edge(45,50);
+        Edge e19 = new Edge(42,120);
+        Edge e20 = new Edge(111,20);        
+        
         g.insertEdge(e1) ;
         g.insertEdge(e2) ;
         g.insertEdge(e3) ;
@@ -49,7 +59,17 @@ public class GraphIntro {
         g.insertEdge(e9) ;
         g.insertEdge(e10) ;
         g.insertEdge(e11) ;
+        g.insertEdge(e12) ;
+        g.insertEdge(e13) ;
+        g.insertEdge(e14) ;
+        g.insertEdge(e15) ;        
 
+        g.insertEdge(e16) ;
+        g.insertEdge(e17) ;
+        g.insertEdge(e18) ;
+        g.insertEdge(e19) ;
+        g.insertEdge(e20) ; 
+        
         g.showDetails() ;
         g.showEdges() ;
         g.showAdjacencyMatrix() ;

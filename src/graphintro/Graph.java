@@ -128,5 +128,14 @@ public class Graph {
         System.out.println("---------------------------------------------------");
         return this;
     }
+    
+    public Graph showAdjacencyList(){
+        System.out.println("-- Adjacency List ---------------------------------");
+        AdjMatrixI ami = new AdjMatrix(this);
+        ami.showAdjList() ;
+        System.out.println("---------------------------------------------------");    
+    
+    return this;
+    }
 
 }

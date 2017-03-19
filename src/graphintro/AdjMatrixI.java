@@ -9,4 +9,5 @@ import java.util.ArrayList;
 public interface AdjMatrixI {
     ArrayList< String > getAdjMatrix() ;
     void showAdjMatrix() ;    
+    void showAdjList() ;
 }

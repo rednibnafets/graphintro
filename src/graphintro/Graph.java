@@ -24,6 +24,14 @@ public class Graph {
         return this;
     }
 
+    public int getNumberOfEdges(){
+        return graph.size() ;
+    }
+    
+    public Edge getEdge(int position){
+        return graph.get(position) ;
+    }
+    
     public Graph showEdges() {
         System.out.println("-- Edges ------------------------------------------");
         for (Edge e : graph) {
@@ -32,4 +40,13 @@ public class Graph {
         System.out.println("--------------------------------------------------");        
         return this;
     }
+
+    public Graph showAdjacencyMatrix(){
+        System.out.println("-- Adjacency Matrix ------------------------------");            
+        AdjMatrixI ami = new AdjMatrix(this) ;
+        ami.showAdjMatrix() ;
+        System.out.println("--------------------------------------------------");     
+        return this;
+    }
+
 }

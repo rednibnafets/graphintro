@@ -47,15 +47,16 @@ public class AdjMatrix implements AdjMatrixI {
     }
 
     @Override
-    public ArrayList< String> getAdjMatrix() {
+    public ArrayList< String > getAdjMatrix() {
         return theMatrix;
     }
 
     @Override
     public void showAdjMatrix() {
-        theMatrix.stream().forEach((s) -> {
-            System.out.println(s);
-        });
+        int i = 0 ;
+//        theMatrix.stream().forEach((s) -> {
+//            System.out.println(s);
+//        });
     }
 
     @Override

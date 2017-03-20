@@ -133,9 +133,13 @@ public class Graph {
         return allEdges.size();
     }
 
-//    public Edge getEdge(int position) {
-//        return graph.get(position);
-//    }
+    public int getNumberOfVertices() {
+        return allVertices.size();
+    }    
+    
+    public Edge getEdge(int position) {
+        return allEdges.get(position);
+    }
 
     public Graph showDetails() {
         System.out.println("-- Graph Details ----------------------------------");
@@ -156,7 +160,7 @@ public class Graph {
 
     public Graph showAdjacencyMatrix() {
         System.out.println("-- Adjacency Matrix -------------------------------");
-        AdjMatrixI ami = new AdjMatrix(this);
+        AdjMatrixI ami = new AdjMatrix2(this);
         ami.showAdjMatrix();
         System.out.println("---------------------------------------------------");
         return this;
@@ -164,7 +168,7 @@ public class Graph {
 
     public Graph showAdjacencyList() {
         System.out.println("-- Adjacency List ---------------------------------");
-        AdjMatrixI ami = new AdjMatrix(this);
+        AdjMatrixI ami = new AdjMatrix2(this);
         ami.showAdjList();
         System.out.println("---------------------------------------------------");
 

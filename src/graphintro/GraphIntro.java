@@ -58,6 +58,8 @@ public class GraphIntro {
 
         g.showEdges() ;
         g.showDetails() ;
+
+        g.showAdjacencyMatrix() ;
         
         return 0;
         

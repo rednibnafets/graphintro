@@ -8,83 +8,100 @@ import java.util.ArrayList;
  */
 public class Graph {
 
-    private final ArrayList< Edge> graph;
-    private int vertexCount;
-    private int edgeCount;
+    private final ArrayList< Vertex > allVertices ;
+    private final ArrayList< Edge > allEdges ;
 
     public Graph() {
-        graph = new ArrayList<>();
-        vertexCount = 0;
-        edgeCount = 0;
-
+        allVertices = new ArrayList<>();
+        allEdges = new ArrayList<>();
     }
+
 
     public Graph insertEdge(Edge e) {
 
-        if (!edgeExists(e) && !vertexExists(e)) {
-            graph.add(e);
-            edgeCount++;
-            vertexCount += 2;
-            System.out.println(" Edge " + e.getV1() + " - " + e.getV2() + " added to graph.");
-        } else if (!edgeExists(e) && vertexExists(e)) {
-            graph.add(e);
-            edgeCount++;
-            vertexCount++;
-            System.out.println(" One vertex of edge " + e.toString() + " exists."
-                    + " Edge added to graph.");
+        if (!edgeExists(e) ){ 
+            allEdges.add(e);
+            //
+            System.out.println("[insertEdge] Trying to add vertices ...");
+            insertVertex(e.getSource()) ;
+            insertVertex(e.getDestination()) ;
+            //
+            System.out.println("  Edge " + e.toString() + " added to graph.");
         } else {
-            System.out.println(" Edge exists (cannot be added).  Graph unchanged.");
+            System.out.println("  Edge exists (cannot be added).  Graph unchanged.");
         }
         return this;
     }
 
-    protected boolean vertexExists(Edge newEdge) {
+    protected boolean edgeExists(Edge newEdge) {
+
+        boolean edgeExists = false;
+
+        for (Edge e : allEdges) {
+            if (  e.getSource() == newEdge.getSource()
+               && e.getDestination() == newEdge.getDestination() ) {
+                edgeExists = true;
+            }
+        }
+        return edgeExists;
+    }    
+    
+    
+    public ArrayList< Vertex > insertVertex(Vertex v) {
+
+        if (!vertexExists(v)) { 
+            allVertices.add(v);
+            System.out.println("Vertex " + v.getName() + " added to graph.");
+        } else {
+            System.out.println("Vertex " + v.getName() + " already in graph -> vertex cannot be added (again).");
+        }
+           
+        return allVertices ;
+    }
+
+    protected boolean vertexExists(Vertex newVertex) {
 
         boolean vertexExists = false;
 
-        for (Edge e : graph) {
-            if (e.getV1() == newEdge.getV1()
-                    || e.getV2() == newEdge.getV2()
-                    || e.getV1() == newEdge.getV2()
-                    || e.getV2() == newEdge.getV1()) {
+        for (Vertex v : allVertices) {
+            if (v.getName().equalsIgnoreCase(newVertex.getName())) {
                 vertexExists = true;
             }
+
         }
         return vertexExists;
-
     }
 
-    
-    public int findMaxVertex() {
 
-        int maximum = Integer.MIN_VALUE;
-
-        for (Edge e : graph) {
-            if (e.getV1() > maximum) {
-                maximum = e.getV1();
-            }
-            if (e.getV2() > maximum) {
-                maximum = e.getV2();
-            }
-        }
-        return maximum;
-    }
-
-    
-    public int findMinVertex() {
-
-        int minimum = Integer.MAX_VALUE;
-
-        for (Edge e : graph) {
-            if (e.getV1() < minimum) {
-                minimum = e.getV1();
-            }
-            if (e.getV2() < minimum) {
-                minimum = e.getV2();
-            }
-        }
-        return minimum;
-    }
+//    public int findMaxVertex() {
+//
+//        int maximum = Integer.MIN_VALUE;
+//
+//        for (Edge e : graph) {
+//            if (e.getV1() > maximum) {
+//                maximum = e.getV1();
+//            }
+//            if (e.getV2() > maximum) {
+//                maximum = e.getV2();
+//            }
+//        }
+//        return maximum;
+//    }
+//
+//    public int findMinVertex() {
+//
+//        int minimum = Integer.MAX_VALUE;
+//
+//        for (Edge e : graph) {
+//            if (e.getV1() < minimum) {
+//                minimum = e.getV1();
+//            }
+//            if (e.getV2() < minimum) {
+//                minimum = e.getV2();
+//            }
+//        }
+//        return minimum;
+//    }
 //    protected boolean vertex1Exists(Edge newEdge) {
 //
 //        boolean v1exists = false ;
@@ -112,41 +129,25 @@ public class Graph {
 //
 //    }   
 
-    protected boolean edgeExists(Edge newEdge) {
-
-        boolean edgeExists = false;
-
-        for (Edge e : graph) {
-            if (e.getV1() == newEdge.getV1()
-                    && e.getV2() == newEdge.getV2()) {
-                edgeExists = true;
-            }
-
-        }
-
-        return edgeExists;
-
-    }
-
     public int getNumberOfEdges() {
-        return graph.size();
+        return allEdges.size();
     }
 
-    public Edge getEdge(int position) {
-        return graph.get(position);
-    }
+//    public Edge getEdge(int position) {
+//        return graph.get(position);
+//    }
 
     public Graph showDetails() {
         System.out.println("-- Graph Details ----------------------------------");
-        System.out.println("   vertex count : " + vertexCount);
-        System.out.println("   edge count : " + edgeCount);
+        System.out.println("   vertex count : " + allVertices.size() );
+        System.out.println("   edge count : " + allEdges.size() );
         System.out.println("---------------------------------------------------");
         return this;
     }
 
     public Graph showEdges() {
         System.out.println("-- Edges ------------------------------------------");
-        for (Edge e : graph) {
+        for (Edge e : allEdges) {
             System.out.println(e.toString());
         }
         System.out.println("---------------------------------------------------");

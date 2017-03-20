@@ -6,25 +6,31 @@ package graphintro;
  */
 public class Edge {
 
-    private int v1;
-    private int v2;
+    private final Vertex src ;   // source
+    private final Vertex dest ;  // destination
+    private final boolean tied ; // connection between src and dest established
 
-    public Edge(int v1, int v2) {
-        this.v1 = v1;
-        this.v2 = v2;
+    public Edge(Vertex v1, Vertex v2) {
+        src  = v1;
+        dest = v2;
+        tied = true ;
     }
     
-    public int getV1() {
-        return v1 ;
+    public Vertex getSource() {
+        return src ;
     }
     
-    public int getV2() {
-        return v2 ;
+    public Vertex getDestination() {
+        return dest ;
+    }
+    
+    public boolean tiedTogether(){
+        return tied ;
     }
 
     @Override
     public String toString() {
-        String edge = v1 +" - " + v2 ;
+        String edge = src.getName() +" - " + dest.getName() ;
         return edge;
     }
 }
